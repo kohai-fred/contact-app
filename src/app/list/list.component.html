@@ -1,0 +1,36 @@
+<!-- INPUT recherche -->
+<input #searchElt (keyup)="filterContacts(searchElt.value)" class="form-control" placeholder="Recherche..." type="text">
+
+<ul class="list-group">
+
+    <li *ngFor="let contact of contacts" class="list-group-item d-flex justify-content-between align-items-center">
+        <!-- block button supprimer, image, prenom nom -->
+
+        <span>
+
+            <button (click)="deleteContact(contact)" class="btn ">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+
+            <img class="img-thumbnail" [src]="contact.image">
+
+            {{contact.first}} {{contact.last}}
+
+        </span>
+
+        <!-- block 'ajouté le 18/04/2019', button ajouter aux favoris -->
+        <span>
+
+            {{ contact.date }}
+
+            <button (click)="addFav(contact)" class="btn ">
+                <i [class.fas]="isFav(contact)" class="far fa-star"></i>
+            </button>
+
+        </span>
+
+    </li>
+
+</ul>
+
+   
